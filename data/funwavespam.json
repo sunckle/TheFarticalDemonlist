@@ -9,6 +9,10 @@
     "password": "Copyable",
     "records": [
         {
+            "user": "Fartical",
+            "link": "https://www.youtube.com/watch?v=mGPR83tycuQ",
+            "percent": 100,
+            "hz": 360
         }
     ]
 }
