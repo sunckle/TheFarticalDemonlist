@@ -3,7 +3,7 @@
     "name": "Consistency",
     "author": "Fartical",
     "creators": ["Fartical"],
-    "verifier": "",
+    "verifier": "Fartical",
     "verification": "Fartical",
     "percentToQualify": 60,
     "password": "Copyable",
