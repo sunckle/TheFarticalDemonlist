@@ -76,9 +76,14 @@ export async function fetchLeaderboard() {
 
         // Records
         level.records.forEach((record) => {
-            const user = Object.keys(scoreMap).find(
-                (u) => u.toLowerCase() === record.user.toLowerCase(),
-            ) || record.user;
+    if (!record.user) {
+        console.warn("Missing record.user:", record);
+        return; // skips the broken entry so it doesn’t crash
+    }
+
+    const user = Object.keys(scoreMap).find(
+        (u) => (u || "").toLowerCase() === record.user.toLowerCase(),
+    ) || record.user;
             scoreMap[user] ??= {
                 verified: [],
                 completed: [],
