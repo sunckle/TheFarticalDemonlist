@@ -1,0 +1,14 @@
+{
+    "id": 140429013,
+    "name": "Spam",
+    "author": "Fartical",
+    "creators": ["Fartical"],
+    "verifier": "Fartical",
+    "verification": "N/A",
+    "percentToQualify": 100,
+    "password": "Copyable",
+    "records": [
+        {
+        }
+    ]
+}
