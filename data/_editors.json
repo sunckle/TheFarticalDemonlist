@@ -1,12 +1,15 @@
 [
   {
     "role": "owner",
-    "name": "List Owner",
-    "link": "https://www.youtube.com/@Prometheus_Alt"
+    "name": "Fartical",
+    "link": "https://www.youtube.com/@Fartical"
   },
   {
     "role": "helper",
     "name": "Linkin0Bizkit",
     "link": "https://www.youtube.com/watch?v=a5GQrTzSYKE&t=3s"
-  }
+  },
+    "role": "dev",
+    "name": "Fartical",
+    "link": "https://www.youtube.com/@Fartical"
 ]
