@@ -1,7 +1,12 @@
 [
-    {
-        "role": "owner",
-        "name": "Fartical",
-        "link": "https://www.youtube.com/@Fartical"
-    }
-    ]
+  {
+    "role": "owner",
+    "name": "List Owner",
+    "link": "https://www.youtube.com/@Prometheus_Alt"
+  },
+  {
+    "role": "admin",
+    "name": "Linkin0Bizkit",
+    "link": "https://www.youtube.com/watch?v=a5GQrTzSYKE&t=3s"
+  }
+]
