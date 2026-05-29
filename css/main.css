@@ -97,9 +97,13 @@ input[type="checkbox"] {
 
 
 
+.page-list-packs,
+.page-list-packs * {
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
 .page-list-packs {
   padding: 3rem 1.5rem;
-  font-family: inherit;
 }
 
 .pack-container {
@@ -109,9 +113,9 @@ input[type="checkbox"] {
 
 .pack-title {
   margin: 0 0 2rem;
-  font-family: inherit;
   font-size: 3rem;
   line-height: 1;
+  font-weight: 800;
 }
 
 .pack-grid {
@@ -123,26 +127,24 @@ input[type="checkbox"] {
 .pack-card {
   padding: 1.25rem;
   border-radius: 1rem;
-  background: var(--color-background, #fff);
+  background: #fff;
   border: 2px solid rgba(0, 0, 0, 0.12);
   box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08);
 }
 
 .pack-name {
   margin: 0 0 0.75rem;
-  font-family: inherit;
   font-size: 1.75rem;
   line-height: 1.1;
+  font-weight: 800;
 }
 
 .pack-levels {
   margin: 0;
-  font-family: inherit;
   font-size: 1rem;
   line-height: 1.4;
 }
 
 .pack-message {
-  font-family: inherit;
   font-size: 1.25rem;
 }
