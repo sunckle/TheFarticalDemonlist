@@ -35,16 +35,7 @@ export default {
         </aside>
 
         <section class="packs-main">
-          <div class="packs-heading">
-            <img
-              v-if="levelIcon"
-              class="packs-icon"
-              :src="levelIcon"
-              alt=""
-            >
-
-            <h1>{{ levelName(selectedLevel) }}</h1>
-          </div>
+          <h1>{{ levelName(selectedLevel) }}</h1>
 
           <div v-if="selectedLevelData" class="packs-info">
             <p v-if="selectedLevelData.creators">
@@ -61,24 +52,6 @@ export default {
               <strong>Publisher</strong>
               <span>{{ formatValue(selectedLevelData.publisher) }}</span>
             </p>
-          </div>
-
-          <div class="packs-video-tabs">
-            <button
-              class="packs-video-tab"
-              :class="{ active: selectedVideoTab === 'verification' }"
-              @click="selectedVideoTab = 'verification'"
-            >
-              Verification
-            </button>
-
-            <button
-              class="packs-video-tab"
-              :class="{ active: selectedVideoTab === 'showcase' }"
-              @click="selectedVideoTab = 'showcase'"
-            >
-              Showcase
-            </button>
           </div>
 
           <div v-if="videoEmbedUrl" class="packs-video">
@@ -145,7 +118,6 @@ export default {
     selectedPack: null,
     selectedLevel: '',
     selectedLevelData: null,
-    selectedVideoTab: 'verification',
     loading: true,
     error: '',
   }),
@@ -155,15 +127,11 @@ export default {
       if (!this.selectedLevelData) return '';
 
       const video =
-        this.selectedVideoTab === 'showcase'
-          ? this.selectedLevelData.showcase
-          : (
-              this.selectedLevelData.verification ||
-              this.selectedLevelData.video ||
-              this.selectedLevelData.youtube ||
-              this.selectedLevelData.videoUrl ||
-              this.selectedLevelData.video_url
-            );
+        this.selectedLevelData.verification ||
+        this.selectedLevelData.video ||
+        this.selectedLevelData.youtube ||
+        this.selectedLevelData.videoUrl ||
+        this.selectedLevelData.video_url;
 
       return this.toYouTubeEmbed(video);
     },
@@ -172,17 +140,6 @@ export default {
       if (!this.selectedLevelData || !this.selectedLevelData.records) return [];
 
       return this.selectedLevelData.records;
-    },
-
-    levelIcon() {
-      if (!this.selectedLevelData) return '';
-
-      return (
-        this.selectedLevelData.icon ||
-        this.selectedLevelData.image ||
-        this.selectedLevelData.thumbnail ||
-        ''
-      );
     },
   },
 
@@ -210,13 +167,11 @@ export default {
     selectPack(pack) {
       this.selectedPack = pack;
       this.selectedLevel = pack.levels[0] || '';
-      this.selectedVideoTab = 'verification';
       this.loadLevelData(this.selectedLevel);
     },
 
     selectLevel(level) {
       this.selectedLevel = level;
-      this.selectedVideoTab = 'verification';
       this.loadLevelData(level);
     },
 
