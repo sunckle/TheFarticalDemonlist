@@ -97,6 +97,7 @@ input[type="checkbox"] {
 
 
 
+
 .packs-page,
 .packs-page * {
   font-family: Arial, Helvetica, sans-serif !important;
@@ -104,26 +105,43 @@ input[type="checkbox"] {
 }
 
 .packs-page {
-  width: 100%;
+  display: block !important;
+  width: 100% !important;
   min-height: 100vh;
   background: #fff;
 }
 
 .packs-tabs {
-  display: flex;
-  width: 100%;
-  overflow-x: auto;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: stretch !important;
+  width: 100% !important;
+  height: 52px !important;
+  max-height: 52px !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
   border-bottom: 2px solid rgba(0, 0, 0, 0.2);
 }
 
 .packs-tab {
-  flex: 0 0 auto;
-  min-width: 160px;
-  padding: 1rem 1.25rem;
-  border: 0;
-  color: #fff;
-  font-size: 1rem;
-  font-weight: 800;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex: 0 0 auto !important;
+  width: auto !important;
+  min-width: 160px !important;
+  height: 52px !important;
+  max-height: 52px !important;
+  padding: 0 1.25rem !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  color: #fff !important;
+  font-size: 1rem !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  text-align: center !important;
+  white-space: nowrap !important;
   cursor: pointer;
 }
 
@@ -133,95 +151,99 @@ input[type="checkbox"] {
 }
 
 .packs-layout {
-  display: grid;
-  grid-template-columns: 320px minmax(400px, 1fr) 340px;
-  gap: 2.5rem;
-  padding: 2rem 3rem;
+  display: grid !important;
+  grid-template-columns: 320px minmax(400px, 1fr) 340px !important;
+  gap: 2.5rem !important;
+  padding: 2rem 3rem !important;
+  width: 100% !important;
 }
 
 .packs-sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.35rem !important;
 }
 
 .packs-level-button {
-  display: grid;
-  grid-template-columns: 40px 1fr;
-  align-items: center;
-  width: 100%;
-  padding: 0.85rem 1rem;
-  border: 0;
-  border-radius: 0.6rem;
+  display: grid !important;
+  grid-template-columns: 40px 1fr !important;
+  align-items: center !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 44px !important;
+  padding: 0.85rem 1rem !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0.6rem !important;
   background: transparent;
   color: #111;
-  font-size: 1rem;
-  text-align: left;
+  font-size: 1rem !important;
+  text-align: left !important;
   cursor: pointer;
 }
 
 .packs-level-button.active {
-  background: #ef233c;
-  color: #fff;
+  background: #ef233c !important;
+  color: #fff !important;
 }
 
 .packs-main h1 {
-  margin: 0 0 2rem;
-  font-size: 3rem;
-  line-height: 1.05;
-  font-weight: 900;
+  margin: 0 0 2rem !important;
+  font-size: 3rem !important;
+  line-height: 1.05 !important;
+  font-weight: 900 !important;
 }
 
 .packs-info {
-  display: grid;
-  gap: 0.5rem;
-  max-width: 520px;
+  display: grid !important;
+  gap: 0.5rem !important;
+  max-width: 520px !important;
 }
 
 .packs-info p {
-  margin: 0;
-  font-size: 1.05rem;
-  font-weight: 700;
+  margin: 0 !important;
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
 }
 
 .packs-info strong {
-  display: inline-block;
-  width: 120px;
-  text-transform: uppercase;
-  font-weight: 900;
+  display: inline-block !important;
+  width: 120px !important;
+  text-transform: uppercase !important;
+  font-weight: 900 !important;
 }
 
 .packs-about h2 {
-  margin: 0 0 1rem;
-  font-size: 1.65rem;
-  font-weight: 900;
+  margin: 0 0 1rem !important;
+  font-size: 1.65rem !important;
+  font-weight: 900 !important;
 }
 
 .packs-about p {
-  margin: 0 0 2rem;
-  font-size: 1.05rem;
-  line-height: 1.5;
-  font-weight: 700;
+  margin: 0 0 2rem !important;
+  font-size: 1.05rem !important;
+  line-height: 1.5 !important;
+  font-weight: 700 !important;
 }
 
 .packs-message {
-  padding: 3rem;
-  font-size: 1.5rem;
-  font-weight: 800;
+  padding: 3rem !important;
+  font-size: 1.5rem !important;
+  font-weight: 800 !important;
 }
 
 .packs-message-small {
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
 }
 
 @media (max-width: 1000px) {
   .packs-layout {
-    grid-template-columns: 1fr;
-    padding: 1.5rem;
+    grid-template-columns: 1fr !important;
+    padding: 1.5rem !important;
   }
 
   .packs-main h1 {
-    font-size: 2.25rem;
+    font-size: 2.25rem !important;
   }
 }
