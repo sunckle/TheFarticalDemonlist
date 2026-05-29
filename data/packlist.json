@@ -1,7 +1,7 @@
 [
   {
     "name": "Memory Levels",
-    "levels": ["Memory", "Memory Level"],
+    "levels": ["Memory Type Level", "Memory Level"],
     "colour": "#3786fc"
   },
   {
