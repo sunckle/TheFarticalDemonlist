@@ -97,54 +97,131 @@ input[type="checkbox"] {
 
 
 
-.page-list-packs,
-.page-list-packs * {
+.packs-page,
+.packs-page * {
   font-family: Arial, Helvetica, sans-serif !important;
+  box-sizing: border-box;
 }
 
-.page-list-packs {
-  padding: 3rem 1.5rem;
+.packs-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #fff;
 }
 
-.pack-container {
-  width: min(1100px, 100%);
-  margin: 0 auto;
+.packs-tabs {
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
 }
 
-.pack-title {
+.packs-tab {
+  flex: 0 0 auto;
+  min-width: 160px;
+  padding: 1rem 1.25rem;
+  border: 0;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.packs-tab.active {
+  outline: 4px solid rgba(255, 255, 255, 0.8);
+  outline-offset: -4px;
+}
+
+.packs-layout {
+  display: grid;
+  grid-template-columns: 320px minmax(400px, 1fr) 340px;
+  gap: 2.5rem;
+  padding: 2rem 3rem;
+}
+
+.packs-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.packs-level-button {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  align-items: center;
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 0;
+  border-radius: 0.6rem;
+  background: transparent;
+  color: #111;
+  font-size: 1rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.packs-level-button.active {
+  background: #ef233c;
+  color: #fff;
+}
+
+.packs-main h1 {
   margin: 0 0 2rem;
   font-size: 3rem;
-  line-height: 1;
-  font-weight: 800;
+  line-height: 1.05;
+  font-weight: 900;
 }
 
-.pack-grid {
+.packs-info {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.25rem;
+  gap: 0.5rem;
+  max-width: 520px;
 }
 
-.pack-card {
-  padding: 1.25rem;
-  border-radius: 1rem;
-  background: #fff;
-  border: 2px solid rgba(0, 0, 0, 0.12);
-  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08);
+.packs-info p {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
 }
 
-.pack-name {
-  margin: 0 0 0.75rem;
-  font-size: 1.75rem;
-  line-height: 1.1;
+.packs-info strong {
+  display: inline-block;
+  width: 120px;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.packs-about h2 {
+  margin: 0 0 1rem;
+  font-size: 1.65rem;
+  font-weight: 900;
+}
+
+.packs-about p {
+  margin: 0 0 2rem;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+.packs-message {
+  padding: 3rem;
+  font-size: 1.5rem;
   font-weight: 800;
 }
 
-.pack-levels {
-  margin: 0;
-  font-size: 1rem;
-  line-height: 1.4;
+.packs-message-small {
+  font-size: 1.2rem;
+  font-weight: 700;
 }
 
-.pack-message {
-  font-size: 1.25rem;
+@media (max-width: 1000px) {
+  .packs-layout {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+  }
+
+  .packs-main h1 {
+    font-size: 2.25rem;
+  }
 }
