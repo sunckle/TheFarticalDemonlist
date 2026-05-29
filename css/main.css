@@ -94,3 +94,55 @@ input[type="checkbox"] {
     cursor: pointer;
     margin: 0;
 }
+
+
+
+.page-list-packs {
+  padding: 3rem 1.5rem;
+  font-family: inherit;
+}
+
+.pack-container {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+}
+
+.pack-title {
+  margin: 0 0 2rem;
+  font-family: inherit;
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.pack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.pack-card {
+  padding: 1.25rem;
+  border-radius: 1rem;
+  background: var(--color-background, #fff);
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08);
+}
+
+.pack-name {
+  margin: 0 0 0.75rem;
+  font-family: inherit;
+  font-size: 1.75rem;
+  line-height: 1.1;
+}
+
+.pack-levels {
+  margin: 0;
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.pack-message {
+  font-family: inherit;
+  font-size: 1.25rem;
+}
