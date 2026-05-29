@@ -54,6 +54,13 @@ export default {
             </p>
           </div>
 
+          <p
+            v-if="selectedLevelData && selectedLevelData.description"
+            class="packs-description"
+          >
+            {{ selectedLevelData.description }}
+          </p>
+
           <div v-if="videoEmbedUrl" class="packs-video">
             <iframe
               :src="videoEmbedUrl"
@@ -127,8 +134,8 @@ export default {
       if (!this.selectedLevelData) return '';
 
       const video =
-        this.selectedLevelData.verification ||
         this.selectedLevelData.video ||
+        this.selectedLevelData.verification ||
         this.selectedLevelData.youtube ||
         this.selectedLevelData.videoUrl ||
         this.selectedLevelData.video_url;
