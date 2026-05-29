@@ -39,15 +39,15 @@ export default {
 
           <div v-if="selectedLevelData" class="packs-info">
             <p v-if="selectedLevelData.creators">
-              <strong>Creators</strong> {{ selectedLevelData.creators }}
+              <strong>Creators</strong> {{ formatValue(selectedLevelData.creators) }}
             </p>
 
             <p v-if="selectedLevelData.verifier">
-              <strong>Verifier</strong> {{ selectedLevelData.verifier }}
+              <strong>Verifier</strong> {{ formatValue(selectedLevelData.verifier) }}
             </p>
 
             <p v-if="selectedLevelData.publisher">
-              <strong>Publisher</strong> {{ selectedLevelData.publisher }}
+              <strong>Publisher</strong> {{ formatValue(selectedLevelData.publisher) }}
             </p>
 
             <p v-if="selectedLevelData.id">
@@ -59,8 +59,18 @@ export default {
             </p>
           </div>
 
+          <div v-if="videoEmbedUrl" class="packs-video">
+            <iframe
+              :src="videoEmbedUrl"
+              title="Video preview"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+
           <p v-else class="packs-message-small">
-            Select a level from this pack.
+            No video preview found for this level.
           </p>
         </section>
 
@@ -87,6 +97,23 @@ export default {
     loading: true,
     error: '',
   }),
+
+  computed: {
+    videoEmbedUrl() {
+      if (!this.selectedLevelData) return '';
+
+      const video =
+        this.selectedLevelData.video ||
+        this.selectedLevelData.verification ||
+        this.selectedLevelData.showcase ||
+        this.selectedLevelData.youtube ||
+        this.selectedLevelData.youtubeVideo ||
+        this.selectedLevelData.videoUrl ||
+        this.selectedLevelData.video_url;
+
+      return this.toYouTubeEmbed(video);
+    },
+  },
 
   async mounted() {
     try {
@@ -125,6 +152,40 @@ export default {
         .replace(/-/g, ' ')
         .replace(/_/g, ' ')
         .replace(/\b\w/g, letter => letter.toUpperCase());
+    },
+
+    formatValue(value) {
+      if (Array.isArray(value)) {
+        return value.join(', ');
+      }
+
+      return value;
+    },
+
+    toYouTubeEmbed(video) {
+      if (!video) return '';
+
+      const value = Array.isArray(video) ? video[0] : String(video);
+
+      if (value.includes('youtube.com/embed/')) {
+        return value;
+      }
+
+      if (value.includes('youtu.be/')) {
+        const id = value.split('youtu.be/')[1].split('?')[0].split('&')[0];
+        return `https://www.youtube.com/embed/${id}`;
+      }
+
+      if (value.includes('youtube.com/watch?v=')) {
+        const id = value.split('v=')[1].split('&')[0];
+        return `https://www.youtube.com/embed/${id}`;
+      }
+
+      if (value.length === 11 && !value.includes('/')) {
+        return `https://www.youtube.com/embed/${value}`;
+      }
+
+      return '';
     },
 
     async loadLevelData(level) {
