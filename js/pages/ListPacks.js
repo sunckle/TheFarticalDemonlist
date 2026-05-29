@@ -40,7 +40,7 @@ export default {
 
   async mounted() {
     try {
-      const result = await fetch('./data/_packlist.json');
+      const result = await fetch('./data/packlist.json');
 
       if (!result.ok) {
         throw new Error(`File not found: ${result.status}`);
