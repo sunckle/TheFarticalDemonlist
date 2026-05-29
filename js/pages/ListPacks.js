@@ -7,7 +7,7 @@ export default {
         <p v-if="loading">Loading packs...</p>
 
         <p v-else-if="error" style="color: red;">
-          Could not load packs. Make sure data/_packlist.json exists.
+          Could not load packs: {{ error }}
         </p>
 
         <div v-else>
@@ -35,15 +35,20 @@ export default {
   data: () => ({
     packs: [],
     loading: true,
-    error: false,
+    error: '',
   }),
 
   async mounted() {
     try {
-      const result = await fetch('/data/_packlist.json');
+      const result = await fetch('./data/_packlist.json');
+
+      if (!result.ok) {
+        throw new Error(`File not found: ${result.status}`);
+      }
+
       this.packs = await result.json();
-    } catch {
-      this.error = true;
+    } catch (error) {
+      this.error = error.message;
     }
 
     this.loading = false;
