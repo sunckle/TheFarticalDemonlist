@@ -5,8 +5,8 @@
     "colour": "#3786fc"
   },
   {
-    "name": "Hard Pack",
-    "levels": ["another_level_1", "another_level_2", "another_level_3"],
+    "name": "SLH Ea Versions",
+    "levels": ["slheasybuffed", "SLHeabuffedbuffed"],
     "colour": "#d6880c"
   }
 ]
