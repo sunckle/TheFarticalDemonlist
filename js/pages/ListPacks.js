@@ -35,28 +35,50 @@ export default {
         </aside>
 
         <section class="packs-main">
-          <h1>{{ levelName(selectedLevel) }}</h1>
+          <div class="packs-heading">
+            <img
+              v-if="levelIcon"
+              class="packs-icon"
+              :src="levelIcon"
+              alt=""
+            >
+
+            <h1>{{ levelName(selectedLevel) }}</h1>
+          </div>
 
           <div v-if="selectedLevelData" class="packs-info">
             <p v-if="selectedLevelData.creators">
-              <strong>Creators</strong> {{ formatValue(selectedLevelData.creators) }}
+              <strong>Creators</strong>
+              <span>{{ formatValue(selectedLevelData.creators) }}</span>
             </p>
 
             <p v-if="selectedLevelData.verifier">
-              <strong>Verifier</strong> {{ formatValue(selectedLevelData.verifier) }}
+              <strong>Verifier</strong>
+              <span>{{ formatValue(selectedLevelData.verifier) }}</span>
             </p>
 
             <p v-if="selectedLevelData.publisher">
-              <strong>Publisher</strong> {{ formatValue(selectedLevelData.publisher) }}
+              <strong>Publisher</strong>
+              <span>{{ formatValue(selectedLevelData.publisher) }}</span>
             </p>
+          </div>
 
-            <p v-if="selectedLevelData.id">
-              <strong>ID</strong> {{ selectedLevelData.id }}
-            </p>
+          <div class="packs-video-tabs">
+            <button
+              class="packs-video-tab"
+              :class="{ active: selectedVideoTab === 'verification' }"
+              @click="selectedVideoTab = 'verification'"
+            >
+              Verification
+            </button>
 
-            <p v-if="selectedLevelData.password">
-              <strong>Password</strong> {{ selectedLevelData.password }}
-            </p>
+            <button
+              class="packs-video-tab"
+              :class="{ active: selectedVideoTab === 'showcase' }"
+              @click="selectedVideoTab = 'showcase'"
+            >
+              Showcase
+            </button>
           </div>
 
           <div v-if="videoEmbedUrl" class="packs-video">
@@ -72,17 +94,46 @@ export default {
           <p v-else class="packs-message-small">
             No video preview found for this level.
           </p>
+
+          <div v-if="selectedLevelData" class="packs-extra-info">
+            <p v-if="selectedLevelData.id">
+              ID<br>
+              {{ selectedLevelData.id }}
+            </p>
+
+            <p v-if="selectedLevelData.password">
+              PASSWORD<br>
+              {{ selectedLevelData.password }}
+            </p>
+          </div>
+
+          <div v-if="records.length" class="packs-records">
+            <h2>Records</h2>
+
+            <div
+              v-for="record in records"
+              :key="record.user || record.name || record.video"
+              class="packs-record"
+            >
+              <span>Video</span>
+              <strong>{{ record.user || record.name || record.video }}</strong>
+            </div>
+          </div>
         </section>
 
         <aside class="packs-about">
           <h2>About the packs</h2>
           <p>
-            These are list packs. Beat every level in a pack to complete it.
+            These are list packs all chosen by the staff team that you can beat levels for and get the packs attached to your profile.
           </p>
 
           <h2>How can I get these packs?</h2>
           <p>
-            Complete all levels listed under the pack.
+            You get packs by beating all levels that are under them.
+          </p>
+
+          <p>
+            Thanks to KrisGra for helping to make the packs functionality.
           </p>
         </aside>
       </section>
@@ -94,6 +145,7 @@ export default {
     selectedPack: null,
     selectedLevel: '',
     selectedLevelData: null,
+    selectedVideoTab: 'verification',
     loading: true,
     error: '',
   }),
@@ -103,15 +155,34 @@ export default {
       if (!this.selectedLevelData) return '';
 
       const video =
-        this.selectedLevelData.video ||
-        this.selectedLevelData.verification ||
-        this.selectedLevelData.showcase ||
-        this.selectedLevelData.youtube ||
-        this.selectedLevelData.youtubeVideo ||
-        this.selectedLevelData.videoUrl ||
-        this.selectedLevelData.video_url;
+        this.selectedVideoTab === 'showcase'
+          ? this.selectedLevelData.showcase
+          : (
+              this.selectedLevelData.verification ||
+              this.selectedLevelData.video ||
+              this.selectedLevelData.youtube ||
+              this.selectedLevelData.videoUrl ||
+              this.selectedLevelData.video_url
+            );
 
       return this.toYouTubeEmbed(video);
+    },
+
+    records() {
+      if (!this.selectedLevelData || !this.selectedLevelData.records) return [];
+
+      return this.selectedLevelData.records;
+    },
+
+    levelIcon() {
+      if (!this.selectedLevelData) return '';
+
+      return (
+        this.selectedLevelData.icon ||
+        this.selectedLevelData.image ||
+        this.selectedLevelData.thumbnail ||
+        ''
+      );
     },
   },
 
@@ -139,11 +210,13 @@ export default {
     selectPack(pack) {
       this.selectedPack = pack;
       this.selectedLevel = pack.levels[0] || '';
+      this.selectedVideoTab = 'verification';
       this.loadLevelData(this.selectedLevel);
     },
 
     selectLevel(level) {
       this.selectedLevel = level;
+      this.selectedVideoTab = 'verification';
       this.loadLevelData(level);
     },
 
