@@ -1,113 +1,155 @@
+import { fetchPacks, fetchPackLevels } from "../content.js";
+import { getFontColour, embed } from "../util.js";
+import { score } from "../score.js";
+import Spinner from "../components/Spinner.js";
+import LevelAuthors from "../components/List/LevelAuthors.js";
+
 export default {
+  components: {
+    Spinner,
+    LevelAuthors,
+  },
+
   template: `
-    <main class="packs-page">
-      <div class="packs-tabs">
-        <button
-          v-for="pack in packs"
-          :key="pack.name"
-          class="packs-tab"
-          :class="{ active: selectedPack && selectedPack.name === pack.name }"
-          :style="{ backgroundColor: pack.colour || '#777' }"
-          @click="selectPack(pack)"
-        >
-          {{ pack.name }}
-        </button>
-      </div>
+    <main v-if="loading">
+      <Spinner></Spinner>
+    </main>
 
-      <div v-if="loading" class="packs-message">Loading packs...</div>
-
-      <div v-else-if="error" class="packs-message">
-        Could not load packs: {{ error }}
-      </div>
-
-      <section v-else-if="selectedPack" class="packs-layout">
-        <aside class="packs-sidebar">
+    <main v-else class="pack-list">
+      <div class="packs-nav">
+        <div>
           <button
-            v-for="(level, index) in selectedPack.levels"
-            :key="level"
-            class="packs-level-button"
-            :class="{ active: selectedLevel === level }"
-            @click="selectLevel(level)"
+            v-for="(pack, i) in packs"
+            :key="pack.name"
+            @click="switchLevels(i)"
+            :style="{ background: pack.colour }"
+            class="type-label-lg"
           >
-            <span>#{{ index + 1 }}</span>
-            <strong>{{ levelName(level) }}</strong>
+            <p :style="{ color: getFontColour(pack.colour) }">
+              {{ pack.name }}
+            </p>
           </button>
-        </aside>
+        </div>
+      </div>
 
-        <section class="packs-main">
-          <h1>{{ selectedLevelData && selectedLevelData.name ? selectedLevelData.name : levelName(selectedLevel) }}</h1>
+      <div class="list-container">
+        <table class="list" v-if="selectedPackLevels && selectedPackLevels.length">
+          <tr v-for="(level, i) in selectedPackLevels" :key="level[1] || level[0]?.path || i">
+            <td class="rank">
+              <p class="type-label-lg">#{{ i + 1 }}</p>
+            </td>
 
-          <div v-if="selectedLevelData" class="packs-info">
-            <p v-if="selectedLevelData.creators">
-              <strong>Creators</strong>
-              <span>{{ formatValue(selectedLevelData.creators) }}</span>
-            </p>
+            <td class="level" :class="{ active: selectedLevel === i, error: !level[0] }">
+              <button
+                :style="[selectedLevel === i ? { background: pack.colour, color: getFontColour(pack.colour) } : {}]"
+                @click="selectedLevel = i"
+              >
+                <span class="type-label-lg">
+                  {{ level[0] ? level[0].level.name : 'Error (' + level[1] + '.json)' }}
+                </span>
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
 
-            <p v-if="selectedLevelData.verifier">
-              <strong>Verifier</strong>
-              <span>{{ formatValue(selectedLevelData.verifier) }}</span>
-            </p>
+      <div class="level-container">
+        <div class="level" v-if="currentLevel">
+          <h1>{{ currentLevel.level.name }}</h1>
 
-            <p v-if="selectedLevelData.publisher">
-              <strong>Publisher</strong>
-              <span>{{ formatValue(selectedLevelData.publisher) }}</span>
-            </p>
-          </div>
+          <LevelAuthors
+            :author="currentLevel.level.author"
+            :creators="currentLevel.level.creators"
+            :verifier="currentLevel.level.verifier"
+          ></LevelAuthors>
 
-          <p
-            v-if="selectedLevelData && selectedLevelData.description"
-            class="packs-description"
-          >
-            {{ selectedLevelData.description }}
+          <p v-if="currentLevel.level.description" class="level-description">
+            {{ currentLevel.level.description }}
           </p>
 
-          <div v-if="videoEmbedUrl" class="packs-video">
-            <iframe
-              :src="videoEmbedUrl"
-              title="Video preview"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-          </div>
+          <iframe
+            v-if="video"
+            class="video"
+            :src="video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
 
-          <p v-else class="packs-message-small">
-            No video preview found for this level.
+          <p v-else>No video preview found for this level.</p>
+
+          <ul class="stats">
+            <li>
+              <div class="type-title-sm">ID</div>
+              <p>{{ currentLevel.level.id }}</p>
+            </li>
+
+            <li>
+              <div class="type-title-sm">Password</div>
+              <p>{{ currentLevel.level.password || 'Free to Copy' }}</p>
+            </li>
+          </ul>
+
+          <h2>Records</h2>
+
+          <p v-if="currentLevel.level.percentToQualify">
+            <strong>{{ currentLevel.level.percentToQualify }}%</strong> or better to qualify
           </p>
 
-          <div v-if="selectedLevelData" class="packs-extra-info">
-            <p v-if="selectedLevelData.id">
-              ID<br>
-              {{ selectedLevelData.id }}
-            </p>
+          <p v-else>100% or better to qualify</p>
 
-            <p v-if="selectedLevelData.password">
-              PASSWORD<br>
-              {{ selectedLevelData.password }}
+          <table class="records">
+            <tr v-for="record in currentLevel.records" :key="record.user" class="record">
+              <td class="percent">
+                <p>{{ record.percent }}%</p>
+              </td>
+
+              <td class="user">
+                <a
+                  :href="record.link || record.video || '#'"
+                  target="_blank"
+                  class="type-label-lg"
+                >
+                  {{ record.user }}
+                </a>
+              </td>
+
+              <td class="mobile">
+                <img
+                  v-if="record.mobile"
+                  src="./assets/phone-landscape.svg"
+                  alt="Mobile"
+                >
+              </td>
+
+              <td class="hz">
+                <p>{{ record.hz }}Hz</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <div v-else class="level" style="height: 100%; justify-content: center; align-items: center;">
+          <p>(ノಠ益ಠ)ノ彡┻━┻</p>
+        </div>
+      </div>
+
+      <div class="meta-container">
+        <div class="meta">
+          <div class="errors" v-show="errors.length > 0">
+            <p class="error" v-for="error of errors" :key="error">
+              {{ error }}
             </p>
           </div>
 
-          <div v-if="records.length" class="packs-records">
-            <h2>Records</h2>
+          <h3>About the packs</h3>
 
-            <div
-              v-for="record in records"
-              :key="record.user || record.name || record.video"
-              class="packs-record"
-            >
-              <span>Video</span>
-              <strong>{{ record.user || record.name || record.video }}</strong>
-            </div>
-          </div>
-        </section>
-
-        <aside class="packs-about">
-          <h2>About the packs</h2>
           <p>
             These are list packs all chosen by the staff team that you can beat levels for and get the packs attached to your profile.
           </p>
 
-          <h2>How can I get these packs?</h2>
+          <h3>How can I get these packs?</h3>
+
           <p>
             You get packs by beating all levels that are under them.
           </p>
@@ -115,128 +157,105 @@ export default {
           <p>
             Thanks to KrisGra for helping to make the packs functionality.
           </p>
-        </aside>
-      </section>
+        </div>
+      </div>
     </main>
   `,
 
   data: () => ({
     packs: [],
-    selectedPack: null,
-    selectedLevel: '',
-    selectedLevelData: null,
+    errors: [],
+    selected: 0,
+    selectedLevel: 0,
+    selectedPackLevels: [],
     loading: true,
-    error: '',
+    loadingPack: true,
   }),
 
   computed: {
-    videoEmbedUrl() {
-      if (!this.selectedLevelData) return '';
-
-      const video =
-        this.selectedLevelData.video ||
-        this.selectedLevelData.verification ||
-        this.selectedLevelData.youtube ||
-        this.selectedLevelData.videoUrl ||
-        this.selectedLevelData.video_url;
-
-      return this.toYouTubeEmbed(video);
+    pack() {
+      return this.packs[this.selected] || {};
     },
 
-    records() {
-      if (!this.selectedLevelData || !this.selectedLevelData.records) return [];
+    currentLevel() {
+      if (!this.selectedPackLevels || !this.selectedPackLevels[this.selectedLevel]) {
+        return null;
+      }
 
-      return this.selectedLevelData.records;
+      return this.selectedPackLevels[this.selectedLevel][0];
+    },
+
+    video() {
+      if (!this.currentLevel) {
+        return "";
+      }
+
+      return embed(
+        this.currentLevel.level.verification ||
+        this.currentLevel.level.video ||
+        this.currentLevel.level.youtube ||
+        this.currentLevel.level.videoUrl ||
+        this.currentLevel.level.video_url
+      );
     },
   },
 
   async mounted() {
-    try {
-      const result = await fetch('./data/packlist.json');
+    this.packs = await fetchPacks();
 
-      if (!result.ok) {
-        throw new Error(`File not found: ${result.status}`);
-      }
+    if (!this.packs || !this.packs.length) {
+      this.errors = [
+        "Failed to load packs. Make sure data/_packlist.json exists.",
+      ];
 
-      this.packs = await result.json();
-
-      if (this.packs.length > 0) {
-        this.selectPack(this.packs[0]);
-      }
-    } catch (error) {
-      this.error = error.message;
+      this.loading = false;
+      this.loadingPack = false;
+      return;
     }
 
+    await this.loadSelectedPack();
+
     this.loading = false;
+    this.loadingPack = false;
   },
 
   methods: {
-    selectPack(pack) {
-      this.selectedPack = pack;
-      this.selectedLevel = pack.levels[0] || '';
-      this.loadLevelData(this.selectedLevel);
-    },
+    async loadSelectedPack() {
+      this.selectedPackLevels = await fetchPackLevels(
+        this.packs[this.selected].name
+      );
 
-    selectLevel(level) {
-      this.selectedLevel = level;
-      this.loadLevelData(level);
-    },
+      this.errors.length = 0;
 
-    levelName(level) {
-      return String(level)
-        .replace(/-/g, ' ')
-        .replace(/_/g, ' ')
-        .replace(/\b\w/g, letter => letter.toUpperCase());
-    },
+      if (!this.selectedPackLevels) {
+        this.errors = [
+          "Failed to load pack levels.",
+        ];
 
-    formatValue(value) {
-      if (Array.isArray(value)) {
-        return value.join(', ');
+        return;
       }
 
-      return value;
+      this.errors.push(
+        ...this.selectedPackLevels
+          .filter(([_, err]) => err)
+          .map(([_, err]) => {
+            return `Failed to load level. (${err}.json)`;
+          })
+      );
     },
 
-    toYouTubeEmbed(video) {
-      if (!video) return '';
+    async switchLevels(i) {
+      this.loadingPack = true;
+      this.selected = i;
+      this.selectedLevel = 0;
 
-      const value = Array.isArray(video) ? video[0] : String(video);
+      await this.loadSelectedPack();
 
-      if (value.includes('youtube.com/embed/')) {
-        return value;
-      }
-
-      if (value.includes('youtu.be/')) {
-        const id = value.split('youtu.be/')[1].split('?')[0].split('&')[0];
-        return `https://www.youtube.com/embed/${id}`;
-      }
-
-      if (value.includes('youtube.com/watch?v=')) {
-        const id = value.split('v=')[1].split('&')[0];
-        return `https://www.youtube.com/embed/${id}`;
-      }
-
-      if (value.length === 11 && !value.includes('/')) {
-        return `https://www.youtube.com/embed/${value}`;
-      }
-
-      return '';
+      this.loadingPack = false;
     },
 
-    async loadLevelData(level) {
-      this.selectedLevelData = null;
-
-      try {
-        const result = await fetch(`./data/${level}.json`);
-
-        if (!result.ok) {
-          return;
-        }
-
-        this.selectedLevelData = await result.json();
-      } catch {
-        this.selectedLevelData = null;
-      }
-    },
+    score,
+    embed,
+    getFontColour,
   },
 };
