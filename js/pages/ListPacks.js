@@ -35,7 +35,7 @@ export default {
         </aside>
 
         <section class="packs-main">
-          <h1>{{ levelName(selectedLevel) }}</h1>
+          <h1>{{ selectedLevelData && selectedLevelData.name ? selectedLevelData.name : levelName(selectedLevel) }}</h1>
 
           <div v-if="selectedLevelData" class="packs-info">
             <p v-if="selectedLevelData.creators">
