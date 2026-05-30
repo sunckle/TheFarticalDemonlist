@@ -1,12 +1,12 @@
 [
   {
     "name": "Memory Levels",
-    "levels": ["Memory Type Level", "Memory Level"],
+    "levels": ["Memory type level", "Memory Level"],
     "colour": "#3786fc"
   },
   {
     "name": "SLH Ea Versions",
-    "levels": ["slheasybuffed", "SLHeabuffedbuffed"],
+    "levels": ["SLH Ea Buffed", "SLH Ea Buffed Buffed"],
     "colour": "#d6880c"
   }
 ]
