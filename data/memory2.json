@@ -3,12 +3,16 @@
     "name": "Memory Level",
     "author": "Fartical",
     "creators": ["Fartical"],
-    "verifier": "Fartical",
-    "verification": "https://youtu.be/y_vDFR-XzHs",
+    "verifier": "Linkin0Bizkit",
+    "verification": "https://www.youtube.com/watch?v=GOUReYosuP4",
     "percentToQualify": 100,
     "password": "Copyable",
     "records": [
         {
+            "user": "Fartical",
+            "link": "https://youtu.be/y_vDFR-XzHs",
+            "percent": 100,
+            "hz": 120
         }
     ]
 }
