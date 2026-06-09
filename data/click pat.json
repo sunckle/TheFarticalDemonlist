@@ -3,16 +3,12 @@
     "name": "Click Pattern",
     "author": "Fartical",
     "creators": ["Fartical"],
-    "verifier": "Fartical",
-    "verification": "https://www.youtube.com/watch?v=shiy06t0LII",
+    "verifier": "Linkin0Bizkit",
+    "verification": "https://www.youtube.com/watch?v=6BqqTZ-QxLM",
     "percentToQualify": 40,
     "password": "Copyable",
     "records": [
         {
-            "user": "Linkin0Bizkit",
-            "link": "https://www.youtube.com/watch?v=wvogIb8sWkQ",
-            "percent": 41,
-            "hz": 60
         }
     ]
 }
