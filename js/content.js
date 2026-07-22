@@ -28,7 +28,6 @@ export async function fetchList() {
 
   try {
     const list = await listResult.json();
-
     console.log("LIST:", list);
 
     return await Promise.all(
@@ -39,7 +38,6 @@ export async function fetchList() {
 
         try {
           const level = await levelResult.json();
-
           console.log("LOADED:", path, level);
 
           const records = Array.isArray(level.records) ? level.records : [];
