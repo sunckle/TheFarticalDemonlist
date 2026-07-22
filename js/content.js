@@ -29,12 +29,18 @@ export async function fetchList() {
   try {
     const list = await listResult.json();
 
+    console.log("LIST:", list);
+
     return await Promise.all(
       list.map(async (path, rank) => {
+        console.log("LOADING:", path);
+
         const levelResult = await fetch(`${dir}/${path}.json`);
 
         try {
           const level = await levelResult.json();
+
+          console.log("LOADED:", path, level);
 
           const records = Array.isArray(level.records) ? level.records : [];
 
@@ -106,8 +112,6 @@ export async function fetchLeaderboard() {
         score: score(rank + 1, 100, level.percentToQualify),
         link: level.verification,
       });
-    } else {
-      console.warn(`Skipping verifier for ${level.name || `level #${rank + 1}`} because verifier is missing.`);
     }
 
     const records = Array.isArray(level.records) ? level.records : [];
@@ -115,17 +119,11 @@ export async function fetchLeaderboard() {
     records.forEach((record) => {
       const recordUser = clean(record && record.user);
 
-      if (!recordUser) {
-        console.warn(`Skipping record for ${level.name || `level #${rank + 1}`} because record.user is missing.`, record);
-        return;
-      }
+      if (!recordUser) return;
 
       const percent = Number(record.percent);
 
-      if (!Number.isFinite(percent)) {
-        console.warn(`Skipping record for ${level.name || `level #${rank + 1}`} because record.percent is invalid.`, record);
-        return;
-      }
+      if (!Number.isFinite(percent)) return;
 
       const user =
         Object.keys(scoreMap).find((existingUser) => {
