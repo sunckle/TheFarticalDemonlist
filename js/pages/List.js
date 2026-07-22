@@ -122,6 +122,8 @@ export default {
                     </p>
                     <p>
                         Once a level falls into legacy, we don't accept records for them.
+                    </p>
+                    <p>
                 </div>
             </div>
         </main>
