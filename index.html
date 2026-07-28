@@ -64,16 +64,27 @@
                     <a class="nav__icon" href="https://discord.gg/j4GETs49R">
                         <img src="/assets/discord.svg" alt="Discord Logo" />
                     </a>
-                    <!-- List record submission form, add a link to replace the '#' when putting a link to your list submission form-->
+                    <!-- List record submission form -->
                     <a
                         class="nav__cta type-label-lg"
                         href="https://forms.gle/72bHZaYGMY7sW6tx7"
                         target="_blank"
-                        >Submit A Record</a
                     >
+                        Submit A Record
+                    </a>
                 </div>
             </nav>
         </header>
-        <router-view :class="{ dark: store.dark }"></router-view>
+
+        <!-- PAGE TRANSITIONS -->
+        <router-view v-slot="{ Component }">
+            <transition name="page" mode="out-in">
+                <component
+                    :is="Component"
+                    :class="{ dark: store.dark }"
+                />
+            </transition>
+        </router-view>
+
     </body>
 </html>
