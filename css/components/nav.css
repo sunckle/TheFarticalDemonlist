@@ -7,16 +7,27 @@
 }
 
 .nav__tab {
-    transition:
-        transform .25s,
-        opacity .25s,
-        color .25s;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 4rem;
+    padding: 0 1rem;
+
+    color: var(--color-on-primary);
+    text-decoration: none;
+
+    white-space: nowrap;
+    flex-shrink: 0;
+
+    transition: opacity .25s;
 }
 
 .nav__tab:hover {
-    transform: translateY(-2px);
-    opacity: 1;
+    opacity: .8;
 }
+
 
 .nav__tab.router-link-active::after {
     content: "";
