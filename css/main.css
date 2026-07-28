@@ -46,15 +46,18 @@ header {
   padding: 0 2rem;
 
   background: linear-gradient(
-    135deg,
-    #6FABD1 0%,
-    #5A9AC5 45%,
-    #4C7FB0 100%
-);
+      135deg,
+      #6FABD1 0%,
+      #5A9AC5 45%,
+      #4C7FB0 100%
+  );
 
-box-shadow:
-    0 4px 20px rgba(0,0,0,.18);
+  background-size: 200% 200%;
+  animation: headerGradient 10s ease infinite;
+
   color: var(--color-on-primary);
+
+  box-shadow: 0 4px 20px rgba(0,0,0,.18);
 
   transition:
     background-color .25s ease,
