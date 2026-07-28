@@ -1,9 +1,11 @@
+colore primay is the main one
+
 :root {
   --color-background: white;
   --color-on-background: black;
   --color-background-hover: #eee;
   --color-on-background-hover: black;
-  --color-primary: #9490E0;
+  --color-primary: #6FABD1;
   --color-on-primary: white;
   --color-error: #de0000;
   --color-on-error: white;
