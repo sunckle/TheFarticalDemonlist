@@ -88,7 +88,14 @@ header .nav {
 main {
   flex: 1;
 
-  background: var(--color-background);
+  background:
+    radial-gradient(circle at top right,
+        rgba(111,171,209,.12),
+        transparent 40%),
+    radial-gradient(circle at bottom left,
+        rgba(76,127,176,.10),
+        transparent 35%),
+    var(--color-background);
   color: var(--color-on-background);
 
   display: grid;
