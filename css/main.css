@@ -69,15 +69,16 @@ header {
 }
 
 header .logo {
-  justify-self: end;
-  align-self: center;
-  display: flex;
-  align-items: flex-end;
-  gap: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
 }
 
 header .nav {
-  flex: 1;
+    display: flex;
+    align-items: center;
+    width: 100%;
 }
 
 main {
