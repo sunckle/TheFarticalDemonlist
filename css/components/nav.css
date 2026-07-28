@@ -2,49 +2,40 @@
     flex: 1;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 2rem;
-}
-
-.nav__left,
-.nav__right {
-    display: flex;
-    align-items: center;
-}
-
-.nav__left {
-    gap: 2rem;
-}
-
-.nav__right {
-    gap: .75rem;
+    min-width: 0;
 }
 
 .nav__tab {
     position: relative;
     display: flex;
     align-items: center;
-    height: 72px;
+    height: 4rem;
+    padding: 0 .75rem;
+
     color: var(--color-on-primary);
     text-decoration: none;
-    font-weight: 600;
+
     transition: .25s;
 }
 
 .nav__tab:hover {
-    opacity: .85;
+    opacity: .8;
 }
 
 .nav__tab.router-link-active::after {
     content: "";
     position: absolute;
-    bottom: 12px;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 0;
+    left: 15%;
     width: 70%;
     height: 3px;
     border-radius: 999px;
     background: white;
+}
+
+.nav__spacer {
+    flex: 1;
 }
 
 .nav__icon {
@@ -52,19 +43,27 @@
     height: 48px;
     min-width: 48px;
     min-height: 48px;
+    flex: 0 0 48px;
 
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
-    border-radius: 50%;
     border: none;
+    border-radius: 50%;
 
     background: rgba(255,255,255,.12);
 
     cursor: pointer;
 
-    transition: .25s;
+    padding: 0;
+    margin: 0;
+
+    overflow: hidden;
+
+    transition:
+        background .25s,
+        transform .25s;
 }
 
 .nav__icon:hover {
@@ -75,9 +74,12 @@
 .nav__icon img {
     width: 24px;
     height: 24px;
+    display: block;
 }
 
 .nav__cta {
+    margin-left: .5rem;
+
     padding: 14px 26px;
 
     border-radius: 999px;
@@ -85,13 +87,15 @@
     background: white;
     color: var(--color-primary);
 
+    text-decoration: none;
     font-weight: 700;
 
-    text-decoration: none;
-
-    transition: .25s;
+    transition:
+        transform .25s,
+        box-shadow .25s;
 }
 
 .nav__cta:hover {
     transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,.2);
 }
