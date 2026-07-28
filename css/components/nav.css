@@ -112,14 +112,15 @@
 
 .nav .nav__actions .nav__cta {
     margin-left: 1rem;
-    padding: .9rem 1.4rem;
+    padding: .75rem 1.25rem;
+    white-space: nowrap;
+
     background: rgba(255,255,255,.95);
     color: var(--color-primary);
     border-radius: 12px;
     font-weight: 700;
 
-    box-shadow:
-        0 10px 25px rgba(0,0,0,.20);
+    box-shadow: 0 10px 25px rgba(0,0,0,.20);
 
     transition:
         transform .25s ease,
