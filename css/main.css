@@ -39,29 +39,30 @@ body {
 =========================== */
 
 header {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 
-  height: 4rem;
-  padding: 0 2rem;
+    height: 4rem;
+    padding: 0 2rem;
 
-  background: linear-gradient(
-      135deg,
-      #6FABD1 0%,
-      #5A9AC5 45%,
-      #4C7FB0 100%
-  );
+    background: linear-gradient(
+        135deg,
+        #6FABD1 0%,
+        #5A9AC5 45%,
+        #4C7FB0 100%
+    );
 
-  background-size: 200% 200%;
-  animation: headerGradient 10s ease infinite;
+    background-size: 200% 200%;
+    animation: headerGradient 20s ease infinite;
 
-  color: var(--color-on-primary);
+    color: var(--color-on-primary);
 
-  box-shadow: 0 4px 20px rgba(0,0,0,.18);
+    backdrop-filter: blur(12px);
 
-  transition:
-    background-color .25s ease,
-    color .25s ease;
+    box-shadow:
+        0 6px 24px rgba(0,0,0,.22);
+
+    border-bottom: 1px solid rgba(255,255,255,.12);
 }
 
 header .logo {
