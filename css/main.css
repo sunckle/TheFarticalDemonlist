@@ -34,23 +34,11 @@ body {
   margin: 0;
 }
 
-header,
-main {
-  background-color: var(--color-background);
-  color: var(--color-on-background);
-  display: grid;
-  grid-template-columns: minmax(16rem, 1fr) minmax(16rem, 2fr) minmax(16em, 1fr);
-  column-gap: 2rem;
-
-  transition:
-    background-color .25s ease,
-    color .25s ease;
-}
-
 header {
   display: flex;
+  align-items: center;
   padding-inline: calc(25vw - 10rem);
-  height: 4rem;
+  min-height: 4.5rem;
   background-color: var(--color-primary);
   color: var(--color-on-primary);
 }
@@ -58,6 +46,7 @@ header {
 @media screen and (min-width: 1366px) {
   header {
     display: grid;
+    align-items: center;
     padding-inline: 0;
   }
 }
