@@ -41,6 +41,10 @@ main {
   display: grid;
   grid-template-columns: minmax(16rem, 1fr) minmax(16rem, 2fr) minmax(16em, 1fr);
   column-gap: 2rem;
+
+  transition:
+    background-color .25s ease,
+    color .25s ease;
 }
 
 header {
@@ -76,6 +80,8 @@ main {
   display: grid;
   grid-template-rows: minmax(0, 1fr);
   column-gap: 2rem;
+
+  animation: fadeIn .35s ease;
 }
 
 main > div {
@@ -94,4 +100,37 @@ input[type="checkbox"] {
   width: 1.25rem;
   cursor: pointer;
   margin: 0;
+}
+
+img {
+  transition:
+    opacity .3s ease,
+    transform .3s ease;
+}
+
+img:hover {
+  transform: scale(1.02);
+}
+
+button,
+a,
+table,
+tr,
+td {
+  transition:
+    background-color .25s ease,
+    color .25s ease,
+    border-color .25s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
