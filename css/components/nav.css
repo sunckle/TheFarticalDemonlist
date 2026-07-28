@@ -7,25 +7,15 @@
 }
 
 .nav__tab {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    height: 4rem;
-    padding: 0 1rem;
-
-    color: var(--color-on-primary);
-    text-decoration: none;
-
-    white-space: nowrap;
-    flex-shrink: 0;
-
-    transition: opacity .25s;
+    transition:
+        transform .25s,
+        opacity .25s,
+        color .25s;
 }
 
 .nav__tab:hover {
-    opacity: .8;
+    transform: translateY(-2px);
+    opacity: 1;
 }
 
 .nav__tab.router-link-active::after {
