@@ -3,8 +3,8 @@ export default {
         <main class="page-changelog">
             <div class="changelog-container">
 
-                <h1>Changelog</h1>
-                <p class="subtitle">
+                <h1 class="type-display-lg">Changelog</h1>
+                <p class="subtitle type-body-lg">
                     Updates and improvements to The Fartical Demonlist.
                 </p>
 
@@ -14,14 +14,19 @@ export default {
                     :key="update.version"
                 >
                     <div class="header">
-                        <h2>Version {{ update.version }}</h2>
-                        <span>{{ update.date }}</span>
+                        <h2 class="type-headline-md">
+                            Version {{ update.version }}
+                        </h2>
+                        <span class="type-label-md">
+                            {{ update.date }}
+                        </span>
                     </div>
 
                     <ul>
                         <li
                             v-for="change in update.changes"
                             :key="change"
+                            class="type-body-md"
                         >
                             • {{ change }}
                         </li>
