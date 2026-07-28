@@ -214,3 +214,21 @@ td {
         background-position: 0% 50%;
     }
 }
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    background:
+        radial-gradient(circle at top left,
+            rgba(111,171,209,.16),
+            transparent 35%),
+        radial-gradient(circle at bottom right,
+            rgba(76,127,176,.14),
+            transparent 40%);
+
+    pointer-events: none;
+    z-index: -1;
+}
