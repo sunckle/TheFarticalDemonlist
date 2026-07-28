@@ -69,6 +69,8 @@
 }
 
 .nav__icon:hover {
+    background: rgba(255,255,255,.22);
+
     transform:
         translateY(-2px)
         scale(1.05);
