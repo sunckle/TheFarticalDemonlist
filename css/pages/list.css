@@ -39,8 +39,9 @@
     transition:
         background-color .25s ease,
         color .25s ease,
-        transform .2s ease,
-        box-shadow .2s ease;
+        transform .25s ease,
+        box-shadow .25s ease,
+        filter .25s ease;
 }
 
 .page-list .list .level.error button {
@@ -52,13 +53,18 @@
 .page-list .list .level button:hover {
     background-color: var(--color-background-hover);
     color: var(--color-on-background-hover);
-    transform: translateX(6px);
-    box-shadow: 0 8px 20px rgba(0,0,0,.15);
+    transform: translateX(8px) scale(1.02);
+    box-shadow: 0 10px 24px rgba(0,0,0,.18);
+}
+
+.page-list .list .level button:active {
+    transform: scale(.98);
 }
 
 .page-list .list .level.active button {
     background-color: var(--color-primary);
     color: var(--color-on-primary);
+    box-shadow: 0 8px 20px rgba(0,0,0,.15);
 }
 
 .page-list .level-container .level {
@@ -67,6 +73,8 @@
     gap: 2rem;
     padding-right: 2rem;
     max-width: 48rem;
+
+    animation: levelInfo .35s ease;
 }
 
 .page-list .level-container .level .level-authors {
@@ -159,4 +167,54 @@
 
 .page-list .meta .editors li a:hover {
     text-decoration: underline;
+}
+
+/* ===========================
+   Staggered List Animation
+=========================== */
+
+.page-list .list tr {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: levelFade .4s ease forwards;
+}
+
+.page-list .list tr:nth-child(1) { animation-delay: .02s; }
+.page-list .list tr:nth-child(2) { animation-delay: .04s; }
+.page-list .list tr:nth-child(3) { animation-delay: .06s; }
+.page-list .list tr:nth-child(4) { animation-delay: .08s; }
+.page-list .list tr:nth-child(5) { animation-delay: .10s; }
+.page-list .list tr:nth-child(6) { animation-delay: .12s; }
+.page-list .list tr:nth-child(7) { animation-delay: .14s; }
+.page-list .list tr:nth-child(8) { animation-delay: .16s; }
+.page-list .list tr:nth-child(9) { animation-delay: .18s; }
+.page-list .list tr:nth-child(10) { animation-delay: .20s; }
+.page-list .list tr:nth-child(11) { animation-delay: .22s; }
+.page-list .list tr:nth-child(12) { animation-delay: .24s; }
+.page-list .list tr:nth-child(13) { animation-delay: .26s; }
+.page-list .list tr:nth-child(14) { animation-delay: .28s; }
+.page-list .list tr:nth-child(15) { animation-delay: .30s; }
+.page-list .list tr:nth-child(16) { animation-delay: .32s; }
+.page-list .list tr:nth-child(17) { animation-delay: .34s; }
+.page-list .list tr:nth-child(18) { animation-delay: .36s; }
+.page-list .list tr:nth-child(19) { animation-delay: .38s; }
+.page-list .list tr:nth-child(20) { animation-delay: .40s; }
+
+@keyframes levelFade {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes levelInfo {
+    from {
+        opacity: 0;
+        transform: translateX(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
