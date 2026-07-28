@@ -45,28 +45,19 @@
 }
 
 .nav__icon {
-    width: 48px;
-    height: 48px;
-    flex: 0 0 48px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: none;
-    border-radius: 50%;
-    background: rgba(255,255,255,.12);
-
-    cursor: pointer;
-
-    transition:
-        background .25s,
-        transform .25s;
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.15),
+        0 5px 16px rgba(0,0,0,.18);
 }
 
 .nav__icon:hover {
-    background: rgba(255,255,255,.22);
-    transform: translateY(-2px);
+    transform:
+        translateY(-2px)
+        scale(1.05);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.2),
+        0 12px 24px rgba(0,0,0,.25);
 }
 
 .nav__icon img {
