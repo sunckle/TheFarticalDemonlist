@@ -130,6 +130,20 @@
         0 14px 30px rgba(76,127,176,.35);
 }
 
+.page-list .level-container .level {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    max-width: none;
+
+    gap: 2rem;
+
+    padding-right: 2rem;
+
+    animation: levelInfo .35s ease;
+}
+
 .page-list .level-container .level .video {
     aspect-ratio: 16/9;
 
