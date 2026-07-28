@@ -309,3 +309,74 @@
         transform: translateX(0);
     }
 }
+
+/* ===========================
+   Difficulty Colors
+=========================== */
+
+.level.extreme button,
+.level.extreme-demon button {
+    border-left: 5px solid #ff3b3b;
+    box-shadow:
+        0 8px 24px rgba(255,59,59,.22);
+}
+
+.level.extreme button:hover,
+.level.extreme-demon button:hover {
+    box-shadow:
+        0 14px 32px rgba(255,59,59,.35),
+        0 0 22px rgba(255,59,59,.30);
+}
+
+.level.insane button,
+.level.insane-demon button {
+    border-left: 5px solid #ff8c2f;
+    box-shadow:
+        0 8px 24px rgba(255,140,47,.22);
+}
+
+.level.insane button:hover,
+.level.insane-demon button:hover {
+    box-shadow:
+        0 14px 32px rgba(255,140,47,.35),
+        0 0 22px rgba(255,140,47,.30);
+}
+
+.level.hard button,
+.level.hard-demon button {
+    border-left: 5px solid #ffd84a;
+    box-shadow:
+        0 8px 24px rgba(255,216,74,.22);
+}
+
+.level.hard button:hover {
+    box-shadow:
+        0 14px 32px rgba(255,216,74,.35),
+        0 0 22px rgba(255,216,74,.30);
+}
+
+.level.medium button,
+.level.medium-demon button {
+    border-left: 5px solid #55d96c;
+    box-shadow:
+        0 8px 24px rgba(85,217,108,.22);
+}
+
+.level.medium button:hover {
+    box-shadow:
+        0 14px 32px rgba(85,217,108,.35),
+        0 0 22px rgba(85,217,108,.30);
+}
+
+.level.easy button,
+.level.easy-demon button {
+    border-left: 5px solid #4ea7ff;
+    box-shadow:
+        0 8px 24px rgba(78,167,255,.22);
+}
+
+.level.easy button:hover {
+    box-shadow:
+        0 14px 32px rgba(78,167,255,.35),
+        0 0 22px rgba(78,167,255,.30);
+}
