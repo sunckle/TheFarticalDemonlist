@@ -14,11 +14,14 @@
 
 .page-list .list {
     table-layout: auto;
+    border-spacing: 0 .65rem;
+    border-collapse: separate;
 }
 
 .page-list .list .rank {
     text-align: end;
     padding-right: 1rem;
+    font-weight: 700;
 }
 
 .page-list .list .level {
@@ -26,22 +29,67 @@
 }
 
 .page-list .list .level button {
-    background-color: var(--color-background);
+    position: relative;
+    overflow: hidden;
+
+    width: 100%;
+
+    background: linear-gradient(
+        180deg,
+        rgba(255,255,255,.08),
+        rgba(255,255,255,.03)
+    );
+
     color: var(--color-on-background);
-    border: none;
-    border-radius: 0.5rem;
-    padding: 1rem;
+
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 16px;
+
+    padding: 1rem 1.25rem;
+
     text-align: start;
-    word-break: normal;
-    overflow-wrap: anywhere;
+
     cursor: pointer;
 
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 8px 22px rgba(0,0,0,.12);
+
     transition:
-        background-color .25s ease,
-        color .25s ease,
         transform .25s ease,
         box-shadow .25s ease,
-        filter .25s ease;
+        border-color .25s ease,
+        background .25s ease;
+}
+
+/* Light sweep animation */
+
+.page-list .list .level button::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 80%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.10),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+
+    transition: left .7s ease;
+}
+
+.page-list .list .level button:hover::before {
+    left: 150%;
 }
 
 .page-list .list .level.error button {
@@ -51,10 +99,15 @@
 }
 
 .page-list .list .level button:hover {
-    background-color: var(--color-background-hover);
-    color: var(--color-on-background-hover);
-    transform: translateX(8px) scale(1.02);
-    box-shadow: 0 10px 24px rgba(0,0,0,.18);
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(111,171,209,.35);
+
+    box-shadow:
+        0 18px 36px rgba(0,0,0,.18),
+        0 0 24px rgba(111,171,209,.18);
 }
 
 .page-list .list .level button:active {
@@ -62,16 +115,28 @@
 }
 
 .page-list .list .level.active button {
-    background-color: var(--color-primary);
-    color: var(--color-on-primary);
-    box-shadow: 0 8px 20px rgba(0,0,0,.15);
+
+    background: linear-gradient(
+        135deg,
+        #6FABD1,
+        #4C7FB0
+    );
+
+    color: white;
+
+    border-color: transparent;
+
+    box-shadow:
+        0 14px 30px rgba(76,127,176,.35);
 }
 
 .page-list .level-container .level {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+
     padding-right: 2rem;
+
     max-width: 48rem;
 
     animation: levelInfo .35s ease;
@@ -80,19 +145,25 @@
 .page-list .level-container .level .level-authors {
     display: grid;
     grid-template-columns: max-content 1fr;
-    grid-auto-rows: max-content;
     gap: 1rem;
 }
 
 .page-list .level-container .level .video {
     aspect-ratio: 16/9;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 28px rgba(0,0,0,.18);
 }
 
 .page-list .level-container .level .stats {
     display: flex;
     justify-content: space-evenly;
-    text-align: center;
     gap: 2rem;
+    text-align: center;
 }
 
 .page-list .level-container .level .stats li {
@@ -144,25 +215,40 @@
 
 .page-list .meta .errors .error {
     padding: 1rem;
-    background-color: var(--color-error);
-    color: var(--color-on-error);
-    border-radius: 0.5rem;
+
+    background: linear-gradient(
+        135deg,
+        #de0000,
+        #b30000
+    );
+
+    color: white;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 8px 20px rgba(222,0,0,.25);
 }
 
 .page-list .meta .editors {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: .75rem;
 }
 
 .page-list .meta .editors li {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: .5rem;
 }
 
 .page-list .meta .editors li img {
     height: 1.25rem;
+    transition: transform .25s;
+}
+
+.page-list .meta .editors li:hover img {
+    transform: scale(1.1);
 }
 
 .page-list .meta .editors li a:hover {
@@ -170,7 +256,7 @@
 }
 
 /* ===========================
-   Staggered List Animation
+   Animations
 =========================== */
 
 .page-list .list tr {
@@ -201,6 +287,11 @@
 .page-list .list tr:nth-child(20) { animation-delay: .40s; }
 
 @keyframes levelFade {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
     to {
         opacity: 1;
         transform: translateY(0);
