@@ -57,15 +57,27 @@
 }
 
 .nav .nav__actions .nav__icon {
-    height: 3rem;
     width: 3rem;
+    height: 3rem;
+    min-width: 3rem;
+    min-height: 3rem;
+    max-width: 3rem;
+    max-height: 3rem;
+    flex: 0 0 3rem;
+
     border: none;
+    padding: 0;
+    box-sizing: border-box;
+
     background: rgba(255,255,255,.08);
     border-radius: 50%;
     cursor: pointer;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
+    overflow: hidden;
 
     transition:
         background-color .25s ease,
@@ -84,7 +96,10 @@
 }
 
 .nav .nav__actions .nav__icon img {
+    width: 1.5rem;
     height: 1.5rem;
+    object-fit: contain;
+
     transition:
         transform .25s ease,
         filter .25s ease;
