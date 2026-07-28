@@ -4,6 +4,7 @@ export default {
             <div class="changelog-container">
 
                 <h1>Changelog</h1>
+
                 <p class="subtitle">
                     Updates and improvements to The Fartical Demonlist.
                 </p>
@@ -14,12 +15,13 @@ export default {
                     :key="update.version"
                 >
                     <div class="header">
-                        <h2 class="type-headline-md">
+                        <h2>
                             Version {{ update.version }}
                         </h2>
-                        <span class="type-label-md">
+
+                        <p class="type-label-md">
                             {{ update.date }}
-                        </span>
+                        </p>
                     </div>
 
                     <ul>
@@ -27,7 +29,7 @@ export default {
                             v-for="change in update.changes"
                             :key="change"
                         >
-                            • {{ change }}
+                            <p>{{ change }}</p>
                         </li>
                     </ul>
                 </div>
