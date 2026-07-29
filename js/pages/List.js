@@ -288,7 +288,8 @@ export default {
     },
 
         level() {
-            return this.list[this.selected][0];
+            return this.filteredList[this.selected]?.[0];
+},
         },
         video() {
             if (!this.level.showcase) {
