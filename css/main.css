@@ -39,32 +39,42 @@ body {
 =========================== */
 
 header {
+
+    position: relative;
+
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
-    height: 4rem;
+    height: 5rem;
+
     padding: 0 2rem;
 
-    background: linear-gradient(
-        135deg,
-        #6FABD1 0%,
-        #5A9AC5 45%,
-        #4C7FB0 100%
-    );
+    overflow: hidden;
 
-    background-size: 200% 200%;
-    animation: headerGradient 20s ease infinite;
+    background:
+        linear-gradient(
+            135deg,
+            #6FABD1 0%,
+            #5A9AC5 35%,
+            #4C7FB0 70%,
+            #355E8A 100%
+        );
 
-    color: var(--color-on-primary);
+    background-size: 300% 300%;
 
-    backdrop-filter: blur(12px);
+    animation: headerGradient 12s ease infinite;
 
-    box-shadow:
-        0 6px 24px rgba(0,0,0,.22);
+    color: white;
+
+    backdrop-filter: blur(20px);
 
     border-bottom: 1px solid rgba(255,255,255,.12);
-}
 
+    box-shadow:
+        0 10px 35px rgba(0,0,0,.30);
+
+}
 header .logo {
   display: flex;
   align-items: center;
