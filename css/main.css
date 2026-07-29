@@ -427,3 +427,35 @@ body::after {
     }
 
 }
+
+/* =========================================
+   Mouse Glow
+========================================= */
+
+.mouse-glow{
+
+    position:fixed;
+
+    width:320px;
+    height:320px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    transform:translate(-50%,-50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(111,171,209,.16),
+            transparent 70%
+        );
+
+    z-index:-1;
+
+    transition:
+        left .08s linear,
+        top .08s linear;
+
+}
