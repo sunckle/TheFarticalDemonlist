@@ -1,4 +1,5 @@
 import routes from './routes.js';
+import { createParticles } from './particles.js';
 
 export const store = Vue.reactive({
     dark: JSON.parse(localStorage.getItem('dark')) || false,
@@ -11,6 +12,7 @@ export const store = Vue.reactive({
 const app = Vue.createApp({
     data: () => ({ store }),
 });
+
 const router = VueRouter.createRouter({
     history: VueRouter.createWebHashHistory(),
     routes,
@@ -19,3 +21,5 @@ const router = VueRouter.createRouter({
 app.use(router);
 
 app.mount('#app');
+
+createParticles();
