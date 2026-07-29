@@ -359,6 +359,15 @@ export default {
         }
 
         this.loading = false;
+
+        const today = new Date();
+
+const seed =
+    today.getFullYear() * 10000 +
+    (today.getMonth() + 1) * 100 +
+    today.getDate();
+
+this.featuredIndex = seed % this.list.length;
     },
  methods: {
     embed,
