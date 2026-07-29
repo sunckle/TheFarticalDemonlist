@@ -334,7 +334,7 @@ export default {
 
         this.loading = false;
     },
-   methods: {
+ methods: {
     embed,
     score,
 },
@@ -355,4 +355,3 @@ watch: {
 
 },
 };
-
