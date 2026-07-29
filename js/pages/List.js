@@ -276,16 +276,21 @@ export default {
     computed: {
 
     filteredList() {
+
     if (!this.search.trim()) {
         return this.list;
     }
 
-    return this.list.filter(([level]) =>
-        level &&
-        level.name
-            .toLowerCase()
-            .includes(this.search.toLowerCase())
-    );
+    const search = this.search.toLowerCase();
+
+    return this.list.filter(([level]) => {
+
+        if (!level) return false;
+
+        return level.name.toLowerCase().startsWith(search);
+
+    });
+
 },
 
     level() {
