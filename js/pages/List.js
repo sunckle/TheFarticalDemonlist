@@ -327,9 +327,19 @@ export default {
 
         this.loading = false;
     },
-    methods: {
-        embed,
-        score,
-    },
+   methods: {
+    embed,
+    score,
+},
+
+watch: {
+
+    search() {
+
+        this.selected = 0;
+
+    }
+
+},
 };
 
