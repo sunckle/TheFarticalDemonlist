@@ -24,7 +24,7 @@ export function createParticles() {
     canvas.style.width = "100%";
     canvas.style.height = "100%";
     canvas.style.pointerEvents = "none";
-    canvas.style.zIndex = "0";
+    canvas.style.zIndex = "-1";
 
     for (let i = 0; i < 60; i++) {
         particles.push({
