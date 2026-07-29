@@ -446,3 +446,36 @@
 .page-list .list tr:nth-child(n+51) .level button {
     border-left: 5px solid #6FABD1;
 }
+
+
+/* ===========================
+   Search Bar
+=========================== */
+
+.search-box {
+    margin-bottom: 1rem;
+}
+
+.search-box input {
+    width: 100%;
+    padding: .85rem 1rem;
+
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,.08);
+
+    background: rgba(255,255,255,.05);
+    color: var(--color-on-background);
+
+    outline: none;
+
+    font-size: .95rem;
+
+    transition: .25s;
+}
+
+.search-box input:focus {
+    border-color: #6FABD1;
+
+    box-shadow:
+        0 0 20px rgba(111,171,209,.25);
+}
