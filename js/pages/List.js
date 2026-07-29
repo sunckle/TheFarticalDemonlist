@@ -282,27 +282,34 @@ export default {
 
         return this.list.filter(([level]) =>
             level &&
-            level.name.toLowerCase().includes(this.search.toLowerCase())
+            level.name.toLowerCase().includes(
+                this.search.toLowerCase()
+            )
         );
 
     },
 
-        level() {
-            return this.filteredList[this.selected]?.[0];
-},
-        },
-        video() {
-            if (!this.level.showcase) {
-                return embed(this.level.verification);
-            }
+    level() {
 
-            return embed(
-                this.toggledShowcase
-                    ? this.level.showcase
-                    : this.level.verification
-            );
-        },
+        return this.filteredList[this.selected]?.[0];
+
     },
+
+    video() {
+
+        if (!this.level.showcase) {
+            return embed(this.level.verification);
+        }
+
+        return embed(
+            this.toggledShowcase
+                ? this.level.showcase
+                : this.level.verification
+        );
+
+    },
+
+},
     async mounted() {
         this.list = await fetchList();
         this.editors = await fetchEditors();
