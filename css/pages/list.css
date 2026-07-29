@@ -489,3 +489,19 @@
     box-shadow:
         0 0 20px rgba(111,171,209,.25);
 }
+
+@keyframes selectedGlow {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+
+}
