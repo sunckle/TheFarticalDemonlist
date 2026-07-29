@@ -279,37 +279,3 @@ td {
 /* =========================================
    Floating Particles
 ========================================= */
-
-main::after {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    pointer-events: none;
-
-    background-image:
-        radial-gradient(circle, rgba(255,255,255,.18) 1px, transparent 1px);
-
-    background-size: 70px 70px;
-
-    opacity: .6;
-
-    animation: particleScroll 20s linear infinite;
-}
-
-@keyframes particleScroll {
-    from {
-        background-position: 0 0;
-    }
-
-    to {
-        background-position: 0 -70px;
-    }
-}
-
-main > * {
-    position: relative;
-    z-index: 1;
-}
-
