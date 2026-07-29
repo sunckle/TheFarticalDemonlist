@@ -243,26 +243,48 @@
 }
 
 .page-list .level-container .level .records {
-    table-layout: fixed;
+    width: 100%;
+
+    border-collapse: separate;
+    border-spacing: 0 .65rem;
 }
 
-.page-list .level-container .level .records tr td:not(:last-child) {
-    padding-right: 1rem;
+.page-list .level-container .level .records tr {
+    background: rgba(255,255,255,.04);
+
+    border-radius: 12px;
+
+    transition:
+        transform .25s,
+        background .25s;
+}
+
+.page-list .level-container .level .records tr:hover {
+    background: rgba(111,171,209,.12);
+
+    transform: translateX(6px);
+}
+
+.page-list .level-container .level .records td {
+    padding: .9rem 1rem;
+}
+
+.page-list .level-container .level .records td:first-child {
+    border-radius: 12px 0 0 12px;
+}
+
+.page-list .level-container .level .records td:last-child {
+    border-radius: 0 12px 12px 0;
 }
 
 .page-list .level-container .level .records .percent,
-.page-list .level-container .level .records .user,
 .page-list .level-container .level .records .hz {
-    padding-block: 1rem;
+    width: 80px;
+    text-align: right;
 }
 
 .page-list .level-container .level .records .user {
     width: 100%;
-}
-
-.page-list .level-container .level .records .percent,
-.page-list .level-container .level .records .hz {
-    text-align: end;
 }
 
 .page-list .meta-container .og a:hover,
