@@ -223,18 +223,20 @@ body::before {
     content: "";
 
     position: fixed;
-    inset: 0;
-
-    background:
-        radial-gradient(circle at top left,
-            rgba(111,171,209,.16),
-            transparent 35%),
-        radial-gradient(circle at bottom right,
-            rgba(76,127,176,.14),
-            transparent 40%);
+    inset: -20%;
 
     pointer-events: none;
     z-index: -1;
+
+    background:
+        radial-gradient(circle at 20% 30%, rgba(111,171,209,.20), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(76,127,176,.18), transparent 28%),
+        radial-gradient(circle at 60% 80%, rgba(111,171,209,.16), transparent 30%),
+        radial-gradient(circle at 15% 75%, rgba(90,154,197,.15), transparent 28%);
+
+    filter: blur(70px);
+
+    animation: blobMove 24s ease-in-out infinite alternate;
 }
 
 
