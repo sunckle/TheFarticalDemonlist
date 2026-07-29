@@ -604,26 +604,3 @@
 
 }
 
-/* ===========================
-   Scrollbars
-=========================== */
-
-::-webkit-scrollbar {
-
-    width: 10px;
-
-}
-
-::-webkit-scrollbar-thumb {
-
-    background: rgba(111,171,209,.55);
-
-    border-radius: 999px;
-
-}
-
-::-webkit-scrollbar-thumb:hover {
-
-    background: rgba(111,171,209,.8);
-
-}
