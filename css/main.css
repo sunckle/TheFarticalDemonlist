@@ -140,7 +140,9 @@ main::before {
 }
 
 main > div {
-  overflow-y: auto;
+    position: relative;
+    z-index: 1;
+    overflow-y: auto;
 }
 
 .spinner {
