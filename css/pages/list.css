@@ -447,4 +447,23 @@
     border-left: 5px solid #6FABD1;
 }
 
+/* =========================================
+   Glass Panels
+========================================= */
+
+.page-list .list-container,
+.page-list .level-container,
+.page-list .meta-container {
+    background: rgba(255,255,255,.03);
+    backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255,255,255,.06);
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.18);
+
+    margin: 1rem;
+}
 
