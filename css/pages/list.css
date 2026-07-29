@@ -198,17 +198,48 @@
 }
 
 .page-list .level-container .level .stats {
-    display: flex;
-    justify-content: space-evenly;
-    gap: 2rem;
-    text-align: center;
+    display: grid;
+
+    grid-template-columns: repeat(3,1fr);
+
+    gap: 1rem;
 }
 
 .page-list .level-container .level .stats li {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+    list-style: none;
+
+    padding: 1.2rem;
+
+    background: linear-gradient(
+        180deg,
+        rgba(255,255,255,.08),
+        rgba(255,255,255,.04)
+    );
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 16px;
+
+    text-align: center;
+
+    transition:
+        transform .25s,
+        box-shadow .25s;
+}
+
+.page-list .level-container .level .stats li:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 12px 28px rgba(111,171,209,.22);
+}
+
+.page-list .level-container .level .stats li p {
+    margin-top: .75rem;
+
+    font-size: 1.4rem;
+
+    font-weight: 700;
 }
 
 .page-list .level-container .level .records {
