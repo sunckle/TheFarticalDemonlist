@@ -967,3 +967,171 @@
     }
 
 }
+
+/* ===========================
+   Hero Card
+=========================== */
+
+.level-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:1.5rem;
+
+    margin-bottom:2rem;
+
+    padding:1.5rem;
+
+    border-radius:20px;
+
+    background:
+        rgba(255,255,255,.06);
+
+    backdrop-filter:blur(15px);
+
+}
+
+.level-rank{
+
+    width:80px;
+
+    height:80px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:2rem;
+
+    font-weight:900;
+
+    border-radius:18px;
+
+    color:white;
+
+    background:
+        linear-gradient(135deg,#6FABD1,#4C7FB0);
+
+}
+
+/* ===========================
+   Random Button
+=========================== */
+
+.random-btn{
+
+    width:100%;
+
+    margin-bottom:1rem;
+
+    padding:1rem;
+
+    border:none;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-weight:700;
+
+    background:
+        linear-gradient(135deg,#6FABD1,#4C7FB0);
+
+    transition:.25s;
+
+}
+
+.random-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 15px 35px rgba(111,171,209,.35);
+
+}
+
+/* ===========================
+   Search
+=========================== */
+
+.search-wrapper{
+
+    margin-bottom:1.5rem;
+
+}
+
+.search-wrapper input{
+
+    width:100%;
+
+    box-sizing:border-box;
+
+    padding:1rem 1.2rem;
+
+    border:none;
+
+    border-radius:999px;
+
+    outline:none;
+
+    font-size:1rem;
+
+    background:
+        rgba(255,255,255,.08);
+
+    backdrop-filter:blur(12px);
+
+    transition:.3s;
+
+}
+
+.search-wrapper input:focus{
+
+    transform:scale(1.02);
+
+    box-shadow:
+        0 0 25px rgba(111,171,209,.45);
+
+}
+
+/* ===========================
+   Records
+=========================== */
+
+.record{
+
+    transition:.25s;
+
+}
+
+.record:hover{
+
+    transform:translateX(10px);
+
+    background:
+        rgba(111,171,209,.08);
+
+}
+
+/* ===========================
+   Rank Bubble
+=========================== */
+
+.rank p{
+
+    display:inline-block;
+
+    padding:.35rem .9rem;
+
+    border-radius:999px;
+
+    background:
+        rgba(111,171,209,.15);
+
+}
