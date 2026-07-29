@@ -20,24 +20,55 @@ export default {
         <main v-if="loading">
             <Spinner></Spinner>
         </main>
-        <main v-else class="page-list">
-            <div class="list-container">
-                <table class="list" v-if="list">
-                    <tr v-for="([level, err], i) in list">
-                        <td class="rank">
-                            <p v-if="i + 1 <= 50" class="type-label-lg">#{{ i + 1 }}</p>
-                            <p v-else class="type-label-lg">Legacy</p>
-                        </td>
-                        <td class="level" :class="{ active: selected == i, error: !level }">
-                            <button @click="selected = i">
-                                <span class="type-label-lg">
-                                    {{ level?.name || \`Error (\${err}.json)\` }}
-                                </span>
-                            </button>
-                        </td>
-                    </tr>
-                </table>
-            </div>
+<main v-else class="page-list">
+
+    <div class="list-container">
+
+        <div class="search-box">
+            <input
+                v-model="search"
+                type="text"
+                placeholder="🔍 Search levels..."
+            >
+        </div>
+
+        <table class="list" v-if="filteredList.length">
+
+            <tr
+                v-for="([level, err], i) in filteredList"
+                :key="level?.id || i"
+            >
+
+                <td class="rank">
+                    <p v-if="i + 1 <= 50" class="type-label-lg">
+                        #{{ i + 1 }}
+                    </p>
+
+                    <p v-else class="type-label-lg">
+                        Legacy
+                    </p>
+                </td>
+
+                <td
+                    class="level"
+                    :class="{ active: selected == i, error: !level }"
+                >
+
+                    <button @click="selected = i">
+
+                        <span class="type-label-lg">
+                            {{ level?.name || `Error (${err}.json)` }}
+                        </span>
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+        </table>
+
+    </div>
 
             <div class="level-container">
 
