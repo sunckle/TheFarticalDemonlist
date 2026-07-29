@@ -255,37 +255,12 @@ main::before {
     pointer-events: none;
     z-index: 0;
 
-    background-image:
-        radial-gradient(circle, rgba(111,171,209,.18) 2px, transparent 2px),
-        radial-gradient(circle, rgba(255,255,255,.10) 1px, transparent 1px),
-        radial-gradient(circle, rgba(111,171,209,.10) 3px, transparent 3px);
+    background:
+        repeating-radial-gradient(
+            circle,
+            red 0 3px,
+            transparent 3px 100px
+        );
 
-    background-size:
-        260px 260px,
-        180px 180px,
-        340px 340px;
-
-    background-position:
-        0 0,
-        80px 120px,
-        180px 60px;
-
-    animation: particlesFloat 45s linear infinite;
-
-    opacity: .55;
-}
-
-main > * {
-    position: relative;
-    z-index: 1;
-}
-
-@keyframes particlesFloat {
-    from {
-        transform: translateY(0);
-    }
-
-    to {
-        transform: translateY(-260px);
-    }
+    opacity: 1;
 }
