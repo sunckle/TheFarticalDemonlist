@@ -169,16 +169,7 @@
     animation: levelInfo .35s ease;
 }
 
-.page-list .level-container .level .video {
-    aspect-ratio: 16/9;
 
-    border-radius: 16px;
-
-    overflow: hidden;
-
-    box-shadow:
-        0 10px 28px rgba(0,0,0,.18);
-}
 
 .page-list .level-container .level .video:hover {
     transform: translateY(-3px);
