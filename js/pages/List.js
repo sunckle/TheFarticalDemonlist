@@ -112,6 +112,39 @@ export default {
                             frameborder="0">
                         </iframe>
 
+                        <div
+    v-if="selected < 5 && level.screenshots"
+    class="gallery"
+>
+
+    <h2>
+        📷 Level Gallery
+    </h2>
+
+
+    <div class="gallery-main">
+
+        <img
+            :src="level.screenshots[0]"
+            alt="Screenshot"
+        >
+
+    </div>
+
+
+    <div class="gallery-thumbnails">
+
+        <img
+            v-for="image in level.screenshots"
+            :src="image"
+            class="gallery-image"
+            alt="Screenshot"
+        >
+
+    </div>
+
+</div>
+
                         <ul class="stats">
                             <li>
                                 <div class="type-title-sm">
