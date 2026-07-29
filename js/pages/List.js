@@ -24,6 +24,27 @@ export default {
 
     <div class="list-container">
 
+    <div
+    class="featured-level"
+    @click="selected = 0"
+>
+
+    <div class="featured-title">
+        👑 #1 Demon
+    </div>
+
+    <h2>{{ list?.[0]?.[0]?.name }}</h2>
+
+    <p>
+
+        Verified by
+
+        {{ list?.[0]?.[0]?.verifier }}
+
+    </p>
+
+</div>
+
         <div class="search-box">
             <input
                 v-model="search"
