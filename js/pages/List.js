@@ -30,7 +30,7 @@ export default {
 >
 
     <div class="featured-title">
-        👑 #1 Demon
+        Daily Level
     </div>
 
     <h2>{{ list?.[0]?.[0]?.name }}</h2>
