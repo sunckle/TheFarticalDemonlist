@@ -279,3 +279,23 @@ td {
 /* =========================================
    Floating Particles
 ========================================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,.45) 2px, transparent 2px);
+
+    background-size: 80px 80px;
+
+    opacity: .35;
+
+    animation: particlesMove 25s linear infinite;
+
+    z-index: 9999;
+}
