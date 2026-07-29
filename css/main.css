@@ -291,3 +291,43 @@ body::before {
         transform: translateY(0);
     }
 }
+
+
+/* =========================================
+   Floating Particles
+========================================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+    z-index: 0;
+
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,.4) 2px, transparent 2px);
+
+    background-size: 80px 80px;
+
+    opacity: .35;
+
+    animation: particlesMove 25s linear infinite;
+}
+
+@keyframes particlesMove {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-80px);
+    }
+}
+
+header,
+main {
+    position: relative;
+    z-index: 1;
+}
