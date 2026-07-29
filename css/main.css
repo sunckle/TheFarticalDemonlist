@@ -219,24 +219,7 @@ td {
     }
 }
 
-body::before {
-    content: "";
 
-    position: fixed;
-    inset: 0;
-
-    pointer-events: none;
-    z-index: -1;
-
-    background-image:
-        radial-gradient(circle, rgba(255,255,255,.35) 1px, transparent 1px);
-
-    background-size: 80px 80px;
-
-    opacity: .35;
-
-    animation: particlesMove 30s linear infinite;
-}
 
 @keyframes particlesMove {
     from {
@@ -297,37 +280,36 @@ body::before {
    Floating Particles
 ========================================= */
 
-body::before {
+main::after {
     content: "";
 
-    position: fixed;
+    position: absolute;
     inset: 0;
 
     pointer-events: none;
-    z-index: 0;
 
     background-image:
-        radial-gradient(circle, rgba(255,255,255,.4) 2px, transparent 2px);
+        radial-gradient(circle, rgba(255,255,255,.18) 1px, transparent 1px);
 
-    background-size: 80px 80px;
+    background-size: 70px 70px;
 
-    opacity: .35;
+    opacity: .6;
 
-    animation: particlesMove 25s linear infinite;
+    animation: particleScroll 20s linear infinite;
 }
 
-@keyframes particlesMove {
+@keyframes particleScroll {
     from {
-        transform: translateY(0);
+        background-position: 0 0;
     }
 
     to {
-        transform: translateY(-80px);
+        background-position: 0 -70px;
     }
 }
 
-header,
-main {
+main > * {
     position: relative;
     z-index: 1;
 }
+
