@@ -342,10 +342,16 @@ export default {
 watch: {
 
     search() {
-
         this.selected = 0;
+    },
 
+    filteredList() {
+        if (this.selected >= this.filteredList.length) {
+            this.selected = 0;
+        }
     }
+
+},
 
 },
 };
