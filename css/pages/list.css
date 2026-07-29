@@ -139,7 +139,22 @@
 
     gap: 2rem;
 
-    padding-right: 2rem;
+    padding: 2rem;
+
+    background: linear-gradient(
+        180deg,
+        rgba(255,255,255,.08),
+        rgba(255,255,255,.03)
+    );
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 22px;
+
+    backdrop-filter: blur(14px);
+
+    box-shadow:
+        0 14px 40px rgba(0,0,0,.12);
 
     animation: levelInfo .35s ease;
 }
