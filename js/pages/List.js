@@ -295,7 +295,7 @@ export default {
 
     level() {
 
-        return this.filteredList[this.selected]?.[0];
+        return this.list[this.selected]?.[0];
 
     },
 
