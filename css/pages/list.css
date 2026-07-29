@@ -118,16 +118,26 @@
 
     background: linear-gradient(
         135deg,
-        #6FABD1,
-        #4C7FB0
+        #72c6ff,
+        #4d88ff,
+        #6FABD1
     );
+
+    background-size: 250% 250%;
+
+    animation: selectedGlow 4s ease infinite;
 
     color: white;
 
-    border-color: transparent;
+    border: 1px solid rgba(255,255,255,.15);
+
+    transform: translateX(8px);
 
     box-shadow:
+        0 0 18px rgba(111,171,209,.45),
+        0 0 35px rgba(111,171,209,.25),
         0 14px 30px rgba(76,127,176,.35);
+
 }
 
 .page-list .level-container .level {
