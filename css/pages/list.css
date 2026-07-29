@@ -505,3 +505,125 @@
     }
 
 }
+
+
+/* ===========================
+   Modern Cards
+=========================== */
+
+.page-list .level-container .level,
+.page-list .meta {
+
+    background: rgba(255,255,255,.05);
+
+    backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 20px;
+
+    padding: 2rem;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.20);
+
+}
+
+/* ===========================
+   Better Headings
+=========================== */
+
+.page-list h1 {
+
+    font-size: 2.7rem;
+
+    font-weight: 800;
+
+    letter-spacing: -.04em;
+
+    margin-bottom: .25rem;
+
+}
+
+.page-list h2 {
+
+    margin-top: 2rem;
+
+    border-bottom: 2px solid rgba(111,171,209,.25);
+
+    padding-bottom: .5rem;
+
+}
+
+/* ===========================
+   Better Stats
+=========================== */
+
+.page-list .stats {
+
+    margin: 2rem 0;
+
+}
+
+.page-list .stats li {
+
+    background: rgba(255,255,255,.04);
+
+    border-radius: 18px;
+
+    padding: 1.25rem;
+
+    min-width: 120px;
+
+    transition: .3s;
+
+}
+
+.page-list .stats li:hover {
+
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.20);
+
+}
+
+/* ===========================
+   Records
+=========================== */
+
+.page-list .records tr {
+
+    transition: .25s;
+
+}
+
+.page-list .records tr:hover {
+
+    background: rgba(111,171,209,.08);
+
+}
+
+/* ===========================
+   Scrollbars
+=========================== */
+
+::-webkit-scrollbar {
+
+    width: 10px;
+
+}
+
+::-webkit-scrollbar-thumb {
+
+    background: rgba(111,171,209,.55);
+
+    border-radius: 999px;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+    background: rgba(111,171,209,.8);
+
+}
