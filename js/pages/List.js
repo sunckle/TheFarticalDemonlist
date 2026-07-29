@@ -236,6 +236,7 @@ export default {
         editors: [],
         loading: true,
         selected: 0,
+        search: "",
         animateLevel: true,
         errors: [],
         roleIconMap,
