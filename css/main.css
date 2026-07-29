@@ -240,29 +240,27 @@ body::before {
 }
 
 
-/* =========================================
-   Floating Background Particles
-========================================= */
+@keyframes blobMove {
 
-/* =========================================
-   Floating Particles
-========================================= */
+    0% {
+        transform:
+            translate(0px,0px)
+            rotate(0deg)
+            scale(1);
+    }
 
-main::before {
-    content: "";
+    50% {
+        transform:
+            translate(50px,-40px)
+            rotate(6deg)
+            scale(1.15);
+    }
 
-    position: absolute;
-    inset: 0;
+    100% {
+        transform:
+            translate(-40px,30px)
+            rotate(-6deg)
+            scale(.95);
+    }
 
-    pointer-events: none;
-    z-index: 0;
-
-    background:
-        repeating-radial-gradient(
-            circle,
-            red 0 3px,
-            transparent 3px 100px
-        );
-
-    opacity: 1;
 }
