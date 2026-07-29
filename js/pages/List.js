@@ -243,6 +243,19 @@ export default {
         store
     }),
     computed: {
+
+    filteredList() {
+
+        if (!this.search)
+            return this.list;
+
+        return this.list.filter(([level]) =>
+            level &&
+            level.name.toLowerCase().includes(this.search.toLowerCase())
+        );
+
+    },
+
         level() {
             return this.list[this.selected][0];
         },
