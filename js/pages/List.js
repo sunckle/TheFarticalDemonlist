@@ -370,29 +370,24 @@ export default {
 
 },
     async mounted() {
-        this.list = await fetchList();
-        this.editors = await fetchEditors();
+    this.list = await fetchList();
 
-        if (!this.list) {
-            this.errors = [
-                "Failed to load list. Retry in a few minutes or notify list staff.",
-            ];
-        } else {
-            this.errors.push(
-                ...this.list
-                    .filter(([_, err]) => err)
-                    .map(([_, err]) => {
-                        return `Failed to load level. (${err}.json)`;
-                    })
-            );
+    if (this.list) {
+        const today = new Date().toISOString().slice(0, 10);
 
-            if (!this.editors) {
-                this.errors.push("Failed to load list editors.");
-            }
+        let seed = 0;
+        for (let i = 0; i < today.length; i++) {
+            seed += today.charCodeAt(i);
         }
 
-        this.loading = false;
+        const randomIndex = seed % this.list.length;
 
+        const daily = this.list.splice(randomIndex, 1)[0];
+
+        this.list.unshift(daily);
+    }
+
+    this.editors = await fetchEditors();
         const today = new Date();
 
 const seed =
